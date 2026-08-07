@@ -1,0 +1,37 @@
+{
+  "name": "universal-ui-design",
+  "version": "0.1.0",
+  "description": "Image-first, framework-neutral design workflow for coherent accessible products.",
+  "author": {
+    "name": "Awabe"
+  },
+  "license": "MIT",
+  "keywords": [
+    "design-system",
+    "ui-ux",
+    "image-generation",
+    "accessibility",
+    "responsive-design",
+    "product-design"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Universal UI Design",
+    "shortDescription": "Design the system before the screens.",
+    "longDescription": "Creates a brand kit, product-specific tokens, accessible components, screen maps, image references, and an execution-ready design package.",
+    "developerName": "Awabe",
+    "category": "Design",
+    "capabilities": [
+      "Design",
+      "Image generation",
+      "Accessibility",
+      "Responsive design"
+    ],
+    "defaultPrompt": [
+      "Create a design kit for this product brief.",
+      "Map the first screens for this product.",
+      "Review this design for slop and accessibility gaps."
+    ],
+    "brandColor": "#111111"
+  }
+}
