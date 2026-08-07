@@ -2,7 +2,9 @@
 
 ## The problem
 
-Agentic UI generation can produce a convincing first screen and still fail as a product. Common failures include a beautiful hero with no real flow, copied tokens that drift across screens, no light or dark parity, missing loading and error states, weak mobile behavior, inaccessible controls, unstable image-generated text, and marketing copy that sounds polished but says little.
+Agentic UI generation can produce a convincing first screen and still fail as a product. Common failures include a beautiful hero with no real flow, navigation that does not match the user's task, weak information hierarchy, copied tokens that drift across screens, no light or dark parity, missing loading and error states, weak mobile behavior, inaccessible controls, unstable image-generated text, and marketing copy that sounds polished but says little.
+
+The failure is not limited to visual style. A newer model may change the look of the output while preserving the same underlying problem: it still completes the request from familiar interface patterns instead of understanding the product's real structure and behavior.
 
 The issue is not a lack of visual ideas. The issue is that the visual idea is rarely converted into a durable set of decisions before implementation begins.
 

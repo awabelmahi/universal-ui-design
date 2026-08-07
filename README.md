@@ -9,11 +9,23 @@
 
 Framework-agnostic design guidance for AI agents. It uses image generation to establish a strong visual direction, then turns that direction into a coherent, accessible design system and screen package.
 
+## Install
+
+```bash
+npx skills add https://github.com/awabelmahi/universal-ui-design --skill universal-ui-design
+```
+
+For Codex, the explicit agent form is also supported:
+
+```bash
+npx skills add https://github.com/awabelmahi/universal-ui-design --skill universal-ui-design --agent codex
+```
+
 ## Why this exists
 
-Most AI-generated interfaces converge on familiar templates. The result may be functional, but it often has weak hierarchy, copied visual patterns, missing states, inconsistent screens, and little product judgment.
+Text-first coding agents tend to complete UI requests from familiar code and layout patterns. That is why many generated interfaces converge on the same centered hero, card grid, dashboard, pill, and sidebar combinations. The problem is deeper than style. These agents can also miss the real structure of a product: how people move through it, what belongs in navigation, which information matters first, and what should happen when a task is slow, empty, invalid, or complete.
 
-Image models are often better at exploring composition and visual direction than a coding agent working from a vague prompt. Universal UI Design uses that strength at the beginning of the process. It then normalizes the accepted direction into tokens, components, content rules, responsive behavior, accessibility requirements, motion, and screen references that an implementation agent can reproduce.
+Image-generation models are not completing the task from the same code-template path. They can explore composition, hierarchy, shape, and visual relationships without being tied to the interface patterns a text model reaches for during implementation. That is why visual references are useful here: they help establish a stronger design direction before an agent starts filling in familiar defaults. Universal UI Design then extracts the accepted direction and resolves the product structure in writing: tokens, components, navigation, content rules, responsive behavior, accessibility requirements, motion, states, and screen references that an implementation agent can reproduce.
 
 The image is the starting point. The written design package is the source of truth.
 
@@ -57,21 +69,26 @@ These references inform decisions. Their tokens are not copied into every projec
 5. **Generate references.** Produce focused light, dark, and responsive references while keeping approved decisions locked.
 6. **Review and hand off.** Resolve systemic drift in `DESIGN.md`, then finalize the package for the target stack.
 
-## Install
-
-Install the skill with the portable skills CLI:
-
-```bash
-npx skills add https://github.com/awabelmahi08-design/universal-ui-design --skill universal-ui-design
-```
-
-For Codex, the explicit agent form is also supported:
-
-```bash
-npx skills add https://github.com/awabelmahi08-design/universal-ui-design --skill universal-ui-design --agent codex
-```
-
 The skill can also be copied directly from [`skills/universal-ui-design/SKILL.md`](skills/universal-ui-design/SKILL.md). The `.codex-plugin/plugin.json` file makes the repository usable as a plugin package.
+
+## Skills
+
+This release contains one end-to-end skill. The install name is the value passed to `--skill`.
+
+| Skill | Install name | Use it for |
+| --- | --- | --- |
+| Universal UI Design | `universal-ui-design` | Brand kits, design foundations, screen maps, image references, and execution handoffs |
+
+### Operations
+
+The skill uses four focused operations:
+
+| Operation | Purpose |
+| --- | --- |
+| `create` | Start the product brief, brand kit, design foundation, and screen map |
+| `imagegen` | Explore or revise brand and screen references while preserving locked decisions |
+| `screen` | Define one screen, its states, responsive behavior, and reference image |
+| `review` | Check product fit, consistency, accessibility, responsive behavior, content, and motion |
 
 ## Example outputs
 
