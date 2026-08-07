@@ -1,123 +1,93 @@
 # Universal UI Design
 
-An image-first design workflow for creating coherent, accessible product interfaces before implementation.
+<!-- Uncomment this block after adding assets/header.png. -->
+<!--
+<p align="center">
+  <img src="assets/header.png" alt="Universal UI Design" width="100%" />
+</p>
+-->
 
-<!-- Preview image slot: add assets/preview.png after the first accepted design run. -->
+Framework-agnostic design guidance for AI agents. It uses image generation to establish a strong visual direction, then turns that direction into a coherent, accessible design system and screen package.
 
-The repo produces a design package that another agent can execute in any target environment. It is framework-neutral. It does not generate a starter app, a design-system HTML file, or a token compiler.
+## Why this exists
 
-## The promise
+Most AI-generated interfaces converge on familiar templates. The result may be functional, but it often has weak hierarchy, copied visual patterns, missing states, inconsistent screens, and little product judgment.
 
-The agent makes the important design decisions in a stable order:
+Image models are often better at exploring composition and visual direction than a coding agent working from a vague prompt. Universal UI Design uses that strength at the beginning of the process. It then normalizes the accepted direction into tokens, components, content rules, responsive behavior, accessibility requirements, motion, and screen references that an implementation agent can reproduce.
 
-1. Understand the product, audience, job, and constraints.
-2. Create a brand kit and visual direction with image generation.
-3. Convert the accepted direction into product-specific tokens and component rules.
-4. Map a realistic set of screens and states.
-5. Generate screen references and focused variants.
-6. Review for accessibility, responsive behavior, interaction quality, motion, content, and visual drift.
-7. Finalize a package that an implementation agent can follow without guessing.
+The image is the starting point. The written design package is the source of truth.
 
-## Design point of view
+## What it does
 
-Apple is the primary foundation: clear purpose, familiar behavior, agency, flexibility, simplicity, craft, and delight. Linear supplies the product discipline: build for the user's work, remove friction, make the next action obvious, and verify the problem before polishing the solution.
+| Stage | Output | Purpose |
+| --- | --- | --- |
+| Brand | Brand board, mark directions, color and type direction | Establish a visual language before screens |
+| Foundation | Product-specific tokens, typography, layout, components, states | Make the visual language repeatable |
+| Mapping | Realistic screen map and navigation model | Define the product surface instead of inventing isolated screens |
+| References | Light, dark, compact, standard, and wide screen images | Explore and communicate the approved direction |
+| Review | Accessibility, responsive, content, motion, and anti-slop audit | Catch inconsistencies before implementation |
+| Handoff | `PRODUCT.md`, `BRAND-KIT.md`, `DESIGN.md`, screen records, decisions, and asset manifest | Give another agent enough information to build without guessing |
 
-The other reference products contribute patterns where they are useful: Stripe for trustworthy systems and accessible color; Notion and GitHub for information architecture; Airbnb and Spotify for discovery; Arc and Superhuman for focused workflows; Figma and Framer for composable systems; Vercel for restrained visual hierarchy; Cash App and Mercury for confidence around important actions; Headspace, Readwise, and Brilliant for learning and habit loops; Dropbox and Slack for collaboration; Perplexity for search and answer surfaces.
+## Design baseline
 
-Those references inform decisions. Their tokens are never copied as a universal preset. Every product gets a new, named token set derived from its own brand kit, audience, content, and platform constraints.
+Apple is the primary foundation: purpose, agency, familiarity, flexibility, simplicity, craft, and delight. Linear adds product discipline: understand the user's problem, keep the next action clear, reduce friction, and verify the result.
 
-## Repository structure
+The skill also draws on useful patterns from Stripe, Notion, Airbnb, Arc, Spotify, Superhuman, Figma, Vercel, Cash App, Headspace, Readwise, Brilliant, Mercury, Framer, Dropbox, GitHub, Slack, and Perplexity.
 
-```text
-universal-ui-design/
-├── .codex-plugin/
-│   └── plugin.json
-├── README.md
-├── ORIGIN.md
-├── assets/
-│   ├── README.md
-│   └── examples/              # Empty slots for accepted visual examples
-├── skills/
-│   └── universal-ui-design/
-│       └── SKILL.md
-├── commands/
-│   ├── create.md
-│   ├── imagegen.md
-│   ├── screen.md
-│   └── review.md
-├── references/
-│   ├── accessibility.md
-│   ├── anti-slop.md
-│   ├── brand-kit.md
-│   ├── components.md
-│   ├── content-seo.md
-│   ├── imagegen.md
-│   ├── interaction.md
-│   ├── layout.md
-│   ├── motion.md
-│   ├── principles.md
-│   ├── responsive.md
-│   ├── screen-map.md
-│   ├── sources.md
-│   ├── tokens.md
-│   └── typography.md
-├── templates/
-│   ├── BRAND-KIT.md
-│   ├── DESIGN.md
-│   ├── PRODUCT.md
-│   ├── SCREEN-MAP.md
-│   └── SCREEN.md
-└── evals/
-    ├── acceptance.md
-    └── verify-repo.ps1
-```
+These references inform decisions. Their tokens are not copied into every project. Each product receives a new token set derived from its own brand kit, content, audience, and platform constraints.
 
-## Use it
+## Built-in safeguards
 
-Load `skills/universal-ui-design/SKILL.md` when the request is to design a product from a brief, create a brand kit, map screens, generate image references, or review a finalized design package.
+- Light and dark themes are defined from the start.
+- Responsive behavior covers compact, standard, and wide surfaces.
+- Components include states, content rules, interaction behavior, and accessibility notes.
+- Default neutrals use calm near-white and near-black surfaces instead of pure extremes across large regions.
+- Loading, empty, error, success, disabled, selected, pressed, focus, overflow, and recovery states are part of the screen contract.
+- Image generation uses stable dimensions, aspect ratios, filenames, and locked prompt decisions.
+- Generated lettering, logos, UI copy, and geometry are normalized before implementation.
+- Public content includes practical SEO guidance without keyword stuffing or unsupported claims.
+- Blank-slate design does not inspect an existing project unless the user explicitly asks for an audit or implementation.
 
-The source of truth for execution is the finalized `DESIGN.md` plus the approved brand and screen artifacts. Images show the direction. The written system resolves the details that an implementation agent must reproduce.
+## Workflow
+
+1. **Create the brief.** Record the product job, audience, content, platform assumptions, constraints, and success condition.
+2. **Create the brand kit.** Generate and review mark, color, type, icon, image, and motion directions.
+3. **Specify the system.** Write semantic tokens, component contracts, responsive rules, accessibility requirements, motion, and content guidance.
+4. **Map the product.** Choose a realistic screen pack for the product type and cover the primary path plus recovery paths.
+5. **Generate references.** Produce focused light, dark, and responsive references while keeping approved decisions locked.
+6. **Review and hand off.** Resolve systemic drift in `DESIGN.md`, then finalize the package for the target stack.
 
 ## Install
 
-After publishing the repository, install the skill with the portable skills CLI:
+Install the skill with the portable skills CLI:
 
 ```bash
-npx skills add awabelmahi08-design/universal-ui-design --skill universal-ui-design --agent codex
+npx skills add https://github.com/awabelmahi08-design/universal-ui-design --skill universal-ui-design
 ```
 
-The same repository can be used as a plugin through `.codex-plugin/plugin.json` or read directly from `skills/universal-ui-design/SKILL.md`.
+For Codex, the explicit agent form is also supported:
 
-## Visual examples
+```bash
+npx skills add https://github.com/awabelmahi08-design/universal-ui-design --skill universal-ui-design --agent codex
+```
 
-The README is prepared for accepted output without pretending that placeholder images are finished work.
+The skill can also be copied directly from [`skills/universal-ui-design/SKILL.md`](skills/universal-ui-design/SKILL.md). The `.codex-plugin/plugin.json` file makes the repository usable as a plugin package.
 
-<!-- Header image slot: add assets/header.png after the first accepted run. -->
-<!-- ![Universal UI Design header](assets/header.png) -->
+## Example outputs
 
-### Brand kit
+The repository reserves the same kind of centered image blocks used by established design-skill repositories. The blocks stay commented until accepted assets exist, so the README does not display broken links.
 
-<!-- Brand board slot: add assets/examples/brand-kit.png. -->
-<!-- ![Brand kit example](assets/examples/brand-kit.png) -->
+<!-- Uncomment after adding the accepted images. -->
+<!--
+<div align="center">
+  <img src="assets/examples/brand-kit.png" alt="Brand kit example" width="48%" />
+  <img src="assets/examples/screen-reference.png" alt="Screen reference example" width="48%" />
+  <br /><br />
+  <img src="assets/examples/package-overview.png" alt="Final design package example" width="80%" />
+</div>
+-->
 
-### Screen references
-
-<!-- Screen reference slot: add assets/examples/screen-reference.png. -->
-<!-- ![Screen reference example](assets/examples/screen-reference.png) -->
-
-### Final package
-
-<!-- Package overview slot: add assets/examples/package-overview.png. -->
-<!-- ![Final package example](assets/examples/package-overview.png) -->
-
-### Commands
-
-- `create` starts the product brief, brand kit, design foundation, and screen map.
-- `imagegen` creates or revises brand and screen references while preserving locked decisions.
-- `screen` creates a screen reference from the approved system and records its states.
-- `review` audits the package before execution and lists blocking changes.
-
-## Output
+## Output package
 
 Each run writes to a new folder so accepted work is preserved:
 
@@ -136,17 +106,32 @@ design-output/<product-slug>/
 └── execution/
 ```
 
-The default output includes light and dark themes, responsive behavior, component states, motion guidance, content rules, and a screen set sized for the product type. It does not stop at a single hero image.
+## Repository layout
 
-## Scope boundaries
+```text
+universal-ui-design/
+├── .codex-plugin/plugin.json
+├── skills/universal-ui-design/SKILL.md
+├── commands/             # create, imagegen, screen, review
+├── references/           # foundations loaded by stage
+├── templates/            # reusable product artifacts
+├── evals/                # repository and package checks
+├── assets/               # README image slots; no generated examples yet
+├── ORIGIN.md             # research path and design rationale
+└── LICENSE
+```
 
-- Framework-neutral: the handoff can target web, mobile, desktop, or native UI.
-- Sans-serif typography only, with one primary family unless the brief proves a second is necessary.
-- Accessibility is part of every component and screen, not a later pass.
-- Mobile behavior is included in the system even when the first deliverable is a desktop screen.
-- No automatic inspection of an existing project during blank-slate design.
-- No generated image is treated as production code, exact copy, or a final logo without normalization.
+## Learn more
 
-## Status
+- [Origin and research path](ORIGIN.md)
+- [Research sources](references/sources.md)
+- [Skill instructions](skills/universal-ui-design/SKILL.md)
+- [Acceptance checklist](evals/acceptance.md)
 
-Working mock repo. The workflow, references, templates, and checks are the product. Asset generation and implementation remain separate stages.
+## Scope
+
+This is a design skill, not a framework starter. It does not generate a design-system HTML file, require a token compiler, or prescribe a frontend stack. The handoff can target web, mobile, desktop, or native UI.
+
+## License
+
+[MIT](LICENSE)

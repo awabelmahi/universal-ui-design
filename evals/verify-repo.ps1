@@ -49,7 +49,7 @@ if ($skill -notmatch '(?m)^name: universal-ui-design$') { throw 'Skill frontmatt
 if ($skill -notmatch '(?m)^description: .+') { throw 'Skill frontmatter description is missing.' }
 
 $readme = Get-Content -Raw -LiteralPath (Join-Path $repoRoot 'README.md')
-foreach ($requiredText in @('npx skills add', 'Visual examples', 'ImageGen', 'light and dark')) {
+foreach ($requiredText in @('npx skills add', 'Example outputs', 'image generation', 'light and dark')) {
   if ($readme -notmatch [regex]::Escape($requiredText)) { throw "README is missing: $requiredText" }
 }
 
