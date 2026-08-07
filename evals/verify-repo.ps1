@@ -7,6 +7,7 @@ $required = @(
   'ORIGIN.md',
   'skills/universal-ui-design/SKILL.md',
   'commands/create.md',
+  'commands/explore.md',
   'commands/imagegen.md',
   'commands/build.md',
   'commands/screen.md',
@@ -18,6 +19,7 @@ $required = @(
   'references/content-seo.md',
   'references/imagegen.md',
   'references/image-audit.md',
+  'references/variation-exploration.md',
   'references/interaction.md',
   'references/layout.md',
   'references/motion.md',
@@ -29,7 +31,9 @@ $required = @(
   'references/typography.md',
   'templates/BRAND-KIT.md',
   'templates/BUILD-PLAN.md',
+  'templates/DECISIONS.md',
   'templates/DESIGN.md',
+  'templates/EXPLORATION.md',
   'templates/IMAGE-AUDIT.md',
   'templates/PRODUCT.md',
   'templates/SCREEN-MAP.md',
@@ -53,7 +57,7 @@ if ($skill -notmatch '(?m)^name: universal-ui-design$') { throw 'Skill frontmatt
 if ($skill -notmatch '(?m)^description: .+') { throw 'Skill frontmatter description is missing.' }
 
 $readme = Get-Content -Raw -LiteralPath (Join-Path $repoRoot 'README.md')
-foreach ($requiredText in @('npx skills add', 'Example outputs', 'image generation', 'light and dark', 'Build and audit', 'image audit')) {
+foreach ($requiredText in @('npx skills add', 'Example outputs', 'image generation', 'light and dark', 'Build and audit', 'image audit', 'Explore directions')) {
   if ($readme -notmatch [regex]::Escape($requiredText)) { throw "README is missing: $requiredText" }
 }
 

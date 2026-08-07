@@ -33,6 +33,7 @@ The image is the starting point. The written design package is the source of tru
 
 | Stage | Output | Purpose |
 | --- | --- | --- |
+| Exploration | Labeled brand, shell, screen, or landing-page options | Make important choices visible before locking the system |
 | Brand | Brand board, mark directions, color and type direction | Establish a visual language before screens |
 | Foundation | Product-specific tokens, typography, layout, components, states | Make the visual language repeatable |
 | Mapping | Realistic screen map and navigation model | Define the product surface instead of inventing isolated screens |
@@ -57,18 +58,21 @@ These references inform decisions. Their tokens are not copied into every projec
 - Loading, empty, error, success, disabled, selected, pressed, focus, overflow, and recovery states are part of the screen contract.
 - Image generation uses stable dimensions, aspect ratios, filenames, and locked prompt decisions.
 - Generated lettering, logos, UI copy, and geometry are normalized before implementation.
+- Meaningful alternatives are shown before an open brand, system, shell, or page decision is locked.
+- The user can choose, combine, request another option, or delegate the direction.
 - Public content includes practical SEO guidance without keyword stuffing or unsupported claims.
 - Blank-slate design does not inspect an existing project unless the user explicitly asks for an audit or implementation.
 
 ## Workflow
 
 1. **Create the brief.** Record the product job, audience, content, platform assumptions, constraints, and success condition.
-2. **Create the brand kit.** Generate and review mark, color, type, icon, image, and motion directions.
-3. **Specify the system.** Write semantic tokens, component contracts, responsive rules, accessibility requirements, motion, and content guidance.
-4. **Map the product.** Choose a realistic screen pack for the product type and cover the primary path plus recovery paths.
-5. **Build the screen set.** Produce every screen in map order with a shared prompt contract and locked design direction.
-6. **Audit the images.** Compare each image to the system and to the rest of the set. Fix source rules and regenerate affected screens when needed.
-7. **Review and hand off.** Resolve remaining drift, then finalize the package for the target stack.
+2. **Explore directions.** Generate meaningful alternatives before settling on the brand, system, shell, or page composition. Ask the user to choose, combine, request another option, or delegate the choice.
+3. **Create the brand kit.** Generate and review mark, color, type, icon, image, and motion directions.
+4. **Specify the system.** Write semantic tokens, component contracts, responsive rules, accessibility requirements, motion, and content guidance.
+5. **Map the product.** Choose a realistic screen pack for the product type and cover the primary path plus recovery paths.
+6. **Build the screen set.** Produce every screen in map order with a shared prompt contract and locked design direction.
+7. **Audit the images.** Compare each image to the system and to the rest of the set. Fix source rules and regenerate affected screens when needed.
+8. **Review and hand off.** Resolve remaining drift, then finalize the package for the target stack.
 
 The skill can also be copied directly from [`skills/universal-ui-design/SKILL.md`](skills/universal-ui-design/SKILL.md). The `.codex-plugin/plugin.json` file makes the repository usable as a plugin package.
 
@@ -82,11 +86,12 @@ This release contains one end-to-end skill. The install name is the value passed
 
 ### Operations
 
-The skill uses four focused operations:
+The skill uses six focused operations:
 
 | Operation | Purpose |
 | --- | --- |
 | `create` | Start the product brief, brand kit, design foundation, and screen map |
+| `explore` | Generate labeled alternatives and pause for a direction decision |
 | `imagegen` | Explore or revise brand and screen references while preserving locked decisions |
 | `screen` | Define one screen, its states, responsive behavior, and reference image |
 | `build` | Generate the complete screen set, audit it, and write the implementation build plan |
@@ -114,13 +119,15 @@ The full-screen build produces `reviews/IMAGE-AUDIT.md` and `execution/BUILD-PLA
 
 ```text
 design-output/<product-slug>/
+├── EXPLORATION.md
 ├── PRODUCT.md
+├── DECISIONS.md
 ├── BRAND-KIT.md
 ├── DESIGN.md
 ├── SCREEN-MAP.md
-├── DECISIONS.md
 ├── CONTENT-PLAN.md
 ├── ASSET-MANIFEST.md
+├── exploration/
 ├── brand/
 ├── screens/
 ├── reviews/
@@ -133,9 +140,9 @@ design-output/<product-slug>/
 universal-ui-design/
 ├── .codex-plugin/plugin.json
 ├── skills/universal-ui-design/SKILL.md
-├── commands/             # create, imagegen, screen, build, review
-├── references/           # foundations and image-audit rules
-├── templates/            # reusable product and audit artifacts
+├── commands/             # create, explore, imagegen, screen, build, review
+├── references/           # foundations, variation, and image-audit rules
+├── templates/            # reusable product, exploration, and audit artifacts
 ├── evals/                # repository and package checks
 ├── assets/               # README image slots; no generated examples yet
 ├── ORIGIN.md             # research path and design rationale

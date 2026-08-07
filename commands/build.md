@@ -8,20 +8,22 @@ Use this command after the brand kit, design foundation, and screen map are acce
 2. `DESIGN.md`
 3. `BRAND-KIT.md`
 4. `SCREEN-MAP.md`
-5. `DECISIONS.md`
-6. `references/imagegen.md`
-7. `references/image-audit.md`
-8. `references/components.md`
-9. `references/responsive.md`
-10. `references/accessibility.md`
-11. `references/interaction.md`
-12. `references/motion.md`
+5. `EXPLORATION.md` when an exploration was run
+6. `DECISIONS.md`
+7. `references/imagegen.md`
+8. `references/image-audit.md`
+9. `references/components.md`
+10. `references/responsive.md`
+11. `references/accessibility.md`
+12. `references/interaction.md`
+13. `references/motion.md`
 
 ## Preflight
 
 Before generating the first screen, confirm:
 
 - The product job and primary flow are explicit.
+- Any open direction has passed the exploration gate and has a recorded user decision.
 - The screen map has IDs, order, navigation, states, and responsive changes.
 - Light and dark semantic roles are complete.
 - The canonical shell, navigation, typography roles, spacing rhythm, radii, surfaces, and primary action treatment are locked.

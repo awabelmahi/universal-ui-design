@@ -17,6 +17,8 @@ Use this command after `BRAND-KIT.md` and `DESIGN.md` have an accepted baseline.
 
 ## Sequence
 
+If the brand, system, shell, or screen composition is still an open choice, stop and run `commands/explore.md` first. Do not resolve an open direction inside one screen.
+
 1. Choose one screen and state its task.
 2. Read the current token and component contracts instead of inventing local values.
 3. Define the information hierarchy and primary action.

@@ -9,6 +9,13 @@ Run this checklist against a generated package, not only the repository itself.
 - [ ] The primary flow has a useful success and recovery path.
 - [ ] Screen count matches the product type and real feature surface.
 
+## Exploration
+
+- [ ] Open brand, shell, screen, or landing-page decisions were explored before being locked.
+- [ ] Options vary meaningful axes instead of only changing accent color or decoration.
+- [ ] The user chose, combined, requested another option, or delegated the direction.
+- [ ] `EXPLORATION.md` and `DECISIONS.md` record accepted and rejected directions.
+
 ## Brand kit
 
 - [ ] Wordmark, symbol, lockup, monochrome, reversed, and small-size uses are addressed where relevant.

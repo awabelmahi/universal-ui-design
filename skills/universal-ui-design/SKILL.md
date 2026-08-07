@@ -11,6 +11,7 @@ Create the design system before creating the screen set. The deliverable is a pa
 
 - Start from the product job, audience, content, and constraints. Do not start from a style keyword.
 - Use image generation to explore and communicate visual direction. Use the written design files to make the direction repeatable.
+- Before locking a brand, system, or screen direction, generate meaningful alternatives when the decision is open. Ask the user to choose, combine named parts, request another option, or delegate the choice.
 - Treat the screen set as one system. Shared shell, tokens, components, spacing, navigation, and state rules must be carried into every generated screen.
 - Treat Apple as the primary quality foundation: purpose, agency, responsibility, familiarity, flexibility, simplicity, craft, and delight.
 - Use Linear's discipline: understand the problem, choose a clear direction, remove friction, and verify the result.
@@ -20,6 +21,7 @@ Create the design system before creating the screen set. The deliverable is a pa
 - Use sans-serif typography. Keep the family count low and the hierarchy intentional.
 - Make reasonable assumptions when the brief is incomplete. Record them in `PRODUCT.md` and `DECISIONS.md` instead of stalling.
 - Do not create the final screen set before the brand kit and design foundation are approved.
+- Do not silently settle on a direction when the user has asked for options or has not approved the open decision.
 - Do not accept a screen because it looks good in isolation. Audit it against the system and the other screens.
 - Do not treat generated text, logos, icons, or UI geometry as reliable production output. Normalize them into written rules and implementation-ready assets.
 
@@ -40,7 +42,17 @@ Create `PRODUCT.md` from `templates/PRODUCT.md`. Capture the product name and jo
 
 If the user gives only a loose idea, infer a plausible first product and state the assumption. Do not invent a large feature set just to fill space.
 
-### 2. Make the brand kit first
+### 2. Explore before locking
+
+When the visual or structural direction is still open, run `commands/explore.md` and follow `references/variation-exploration.md`.
+
+Generate a labeled option set before committing to the brand kit, design tokens, product shell, primary screen composition, or landing-page structure. Keep the product, content conditions, frame, and accepted constraints stable while varying only the unresolved axes.
+
+Use three options by default. Use four for landing-page architecture. Use up to five only when the user asks for more or the decision has several meaningful axes. Write `EXPLORATION.md`, show the tradeoffs, and ask the user to choose or delegate the choice. Record the result in `DECISIONS.md`.
+
+Do not move an option into `BRAND-KIT.md`, `DESIGN.md`, or the screen set until it is accepted.
+
+### 3. Make the brand kit
 
 Create `BRAND-KIT.md` from `templates/BRAND-KIT.md` and follow `references/brand-kit.md` and `references/imagegen.md`.
 
@@ -57,7 +69,7 @@ Generate a brand board before screens. The default brand pass includes:
 
 Generate three focused variants when the direction is uncertain. Change one variable at a time. Preserve the approved decisions in `DECISIONS.md`. If a mark contains unstable generated lettering, redraw it as a vector or type-based asset before handoff.
 
-### 3. Normalize the design foundation
+### 4. Normalize the design foundation
 
 Create `DESIGN.md` from `templates/DESIGN.md`. Read the principles, tokens, typography, layout, components, accessibility, responsive, interaction, motion, and content references named in the command files.
 
@@ -73,7 +85,7 @@ Define foundations in this order:
 
 Use the default values in the references as starting points. Adjust them only when the product brief or accepted brand direction requires it. Record every deviation.
 
-### 4. Build a realistic screen map
+### 5. Build a realistic screen map
 
 Create `SCREEN-MAP.md` from `templates/SCREEN-MAP.md` and use `references/screen-map.md`.
 
@@ -81,7 +93,7 @@ Choose the screen pack that matches the product type. The count is a realistic s
 
 Do not create screens just to reach a number. Do not omit settings, onboarding, search, detail, or recovery flows when the product needs them.
 
-### 5. Build the screen set
+### 6. Build the screen set
 
 Run `commands/build.md` after the screen map is accepted. Create a canonical shell and a representative component sampler before generating the full set. Then build every screen in screen-map order.
 
@@ -100,17 +112,18 @@ For each screen in the map:
 
 Use `templates/SCREEN.md` to document the screen outside the image. The screen document is authoritative for labels, behavior, states, and responsive rules.
 
-### 6. Audit and normalize
+### 7. Audit and normalize
 
 Run `commands/review.md` and `references/image-audit.md` against the complete image set. Review every screen for product clarity, task completion, token consistency, light/dark parity, keyboard and focus behavior, contrast, labels, status communication, compact/standard/wide behavior, loading/empty/error/success/disabled/focus/pressed/selected/overflow states, motion purpose, reduced-motion behavior, content clarity, search intent, and asset consistency.
 
 Fix systemic issues in `DESIGN.md` or a shared component contract first. Do not patch the same inconsistency separately in every screen. A visually attractive image with incorrect product structure fails the audit.
 
-### 7. Finalize the execution package
+### 8. Finalize the execution package
 
 The package is ready only when:
 
 - `PRODUCT.md` explains the product and assumptions.
+- `EXPLORATION.md` records meaningful alternatives when a direction was open.
 - `BRAND-KIT.md` names the accepted direction and asset rules.
 - `DESIGN.md` contains product-specific foundations and component contracts.
 - `SCREEN-MAP.md` covers the product's primary flows.
@@ -129,12 +142,15 @@ Write to `design-output/<product-slug>/`. Preserve previous runs instead of over
 ```text
 design-output/<product-slug>/
 ├── PRODUCT.md
+├── EXPLORATION.md
+├── DECISIONS.md
 ├── BRAND-KIT.md
 ├── DESIGN.md
 ├── SCREEN-MAP.md
 ├── DECISIONS.md
 ├── CONTENT-PLAN.md
 ├── ASSET-MANIFEST.md
+├── exploration/
 ├── brand/
 ├── screens/
 ├── reviews/
@@ -150,6 +166,7 @@ The first run may use the templates in this repository. Do not create empty file
 | Request | Read first | Write |
 | --- | --- | --- |
 | Create a system | `commands/create.md`, `references/principles.md`, `references/tokens.md` | Product, brand, design, and screen-map files |
+| Explore directions | `commands/explore.md`, `references/variation-exploration.md`, `references/imagegen.md` | Exploration options and user decision |
 | Create or revise brand images | `commands/imagegen.md`, `references/brand-kit.md`, `references/imagegen.md` | Brand assets, manifest, and decisions |
 | Design a screen | `commands/screen.md`, `references/screen-map.md`, `references/components.md` | Screen reference, states, and manifest entry |
 | Build the full screen set | `commands/build.md`, `references/imagegen.md`, `references/image-audit.md` | All screen references, audits, and build plan |
@@ -162,6 +179,7 @@ The first run may use the templates in this repository. Do not create empty file
 - If a color fails contrast, change the semantic role or surface pairing; do not add a shadow to hide the failure.
 - If two images disagree, identify whether the drift comes from the token, component, shell, prompt lock, or image artifact. Fix that source and regenerate the affected set.
 - If an image looks polished but the task order, navigation, or state behavior is wrong, reject the image and correct the screen contract.
+- If the user has not chosen among meaningful options, pause at the exploration gate. Do not hide the choice inside a token or brand decision.
 - If a component needs too many variants, identify the underlying task difference and split the component only when behavior truly differs.
 - If a desktop layout collapses on compact screens, redesign the information hierarchy; do not only shrink the type.
 - If the brief is ambiguous, make the smallest reasonable assumption and record it.
