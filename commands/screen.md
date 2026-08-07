@@ -13,6 +13,7 @@ Use this command after `BRAND-KIT.md` and `DESIGN.md` have an accepted baseline.
 7. `references/motion.md`
 8. `references/content-seo.md` for a public or marketing page
 9. The relevant screen entry in `SCREEN-MAP.md`
+10. `references/image-audit.md`
 
 ## Sequence
 
@@ -22,9 +23,10 @@ Use this command after `BRAND-KIT.md` and `DESIGN.md` have an accepted baseline.
 4. Define light and dark surface treatment.
 5. Define standard and compact behavior.
 6. List loading, empty, error, success, disabled, selected, pressed, focus, and overflow states that matter.
-7. Generate the reference image with a locked prompt packet.
+7. Generate the reference image with the shared screen-set prompt prefix and a locked screen-specific suffix.
 8. Create a `SCREEN.md` record with exact labels, content rules, behavior, and accessibility notes.
-9. Review the screen against the package before generating another screen.
+9. Audit the image against the design system and neighboring screens.
+10. Fix shared drift at the source and regenerate affected screens before moving on.
 
 ## Screen acceptance
 
@@ -37,3 +39,4 @@ A screen is ready when a reviewer can answer:
 - How does the layout change on a compact surface?
 - How does the screen work without color, hover, or motion?
 - Which token and component rules explain the visual result?
+- Does this screen agree with the canonical shell and repeated components in the rest of the set?

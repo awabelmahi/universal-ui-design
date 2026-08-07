@@ -67,3 +67,13 @@ Run this checklist against a generated package, not only the repository itself.
 - [ ] Accepted assets are stored in the output package.
 - [ ] Written records are authoritative for copy, behavior, states, and tokens.
 - [ ] A separate implementation agent can build without guessing.
+
+## Full screen set
+
+- [ ] Every screen in the map has an image reference or an explicit blocker.
+- [ ] Every screen uses the same shared prompt contract and canonical shell unless its record names a change.
+- [ ] The image set has been reviewed side by side for spacing, type, surfaces, controls, navigation, and density drift.
+- [ ] Image artifacts have been rejected or normalized instead of becoming accidental system rules.
+- [ ] Systemic fixes were applied once and affected screens were regenerated.
+- [ ] `reviews/IMAGE-AUDIT.md` records the findings and regeneration log.
+- [ ] `execution/BUILD-PLAN.md` records the implementation order and shared-system rules.

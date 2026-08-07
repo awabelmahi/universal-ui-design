@@ -11,7 +11,8 @@ Use this command before handing the package to an implementation agent.
 5. `references/interaction.md`
 6. `references/motion.md`
 7. `references/content-seo.md` for public pages
-8. `DESIGN.md`, `SCREEN-MAP.md`, and the supplied screen records
+8. `references/image-audit.md`
+9. `DESIGN.md`, `SCREEN-MAP.md`, and the supplied screen records
 
 ## Review order
 
@@ -21,7 +22,7 @@ Confirm that the screens serve the product job, use the product's real nouns, an
 
 ### 2. System fit
 
-Compare screens against the semantic token table and component contracts. Find repeated drift in the source rule instead of patching individual screens.
+Compare every image and screen record against the semantic token table, component contracts, canonical shell, and neighboring screens. Find repeated drift in the source rule instead of patching individual screens.
 
 ### 3. Access and states
 
@@ -39,9 +40,13 @@ For public surfaces, check page intent, title, description, heading, link text, 
 
 Reject arbitrary decoration, inconsistent radii, mixed density, unexplained badges, excessive cards, generic placeholder copy, and image-generated artifacts.
 
+### 7. Image-set audit
+
+Run the full audit in `references/image-audit.md`. Review repeated navigation, gutters, type roles, control heights, spacing, surfaces, status colors, state patterns, responsive changes, and image integrity side by side. Write `reviews/IMAGE-AUDIT.md` and record every regeneration or source-rule change.
+
 ## Report
 
-Write `reviews/<date>-review.md` with:
+Write `reviews/<date>-review.md` with the general review and `reviews/IMAGE-AUDIT.md` with the complete image-set audit. Create `execution/BUILD-PLAN.md` when the package is ready for implementation.
 
 | Severity | Meaning | Action |
 | --- | --- | --- |

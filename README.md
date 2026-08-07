@@ -37,7 +37,7 @@ The image is the starting point. The written design package is the source of tru
 | Foundation | Product-specific tokens, typography, layout, components, states | Make the visual language repeatable |
 | Mapping | Realistic screen map and navigation model | Define the product surface instead of inventing isolated screens |
 | References | Light, dark, compact, standard, and wide screen images | Explore and communicate the approved direction |
-| Review | Accessibility, responsive, content, motion, and anti-slop audit | Catch inconsistencies before implementation |
+| Build and audit | Complete screen set, image audit, regeneration log, and build plan | Catch drift and produce a coherent implementation package |
 | Handoff | `PRODUCT.md`, `BRAND-KIT.md`, `DESIGN.md`, screen records, decisions, and asset manifest | Give another agent enough information to build without guessing |
 
 ## Design baseline
@@ -66,8 +66,9 @@ These references inform decisions. Their tokens are not copied into every projec
 2. **Create the brand kit.** Generate and review mark, color, type, icon, image, and motion directions.
 3. **Specify the system.** Write semantic tokens, component contracts, responsive rules, accessibility requirements, motion, and content guidance.
 4. **Map the product.** Choose a realistic screen pack for the product type and cover the primary path plus recovery paths.
-5. **Generate references.** Produce focused light, dark, and responsive references while keeping approved decisions locked.
-6. **Review and hand off.** Resolve systemic drift in `DESIGN.md`, then finalize the package for the target stack.
+5. **Build the screen set.** Produce every screen in map order with a shared prompt contract and locked design direction.
+6. **Audit the images.** Compare each image to the system and to the rest of the set. Fix source rules and regenerate affected screens when needed.
+7. **Review and hand off.** Resolve remaining drift, then finalize the package for the target stack.
 
 The skill can also be copied directly from [`skills/universal-ui-design/SKILL.md`](skills/universal-ui-design/SKILL.md). The `.codex-plugin/plugin.json` file makes the repository usable as a plugin package.
 
@@ -88,7 +89,8 @@ The skill uses four focused operations:
 | `create` | Start the product brief, brand kit, design foundation, and screen map |
 | `imagegen` | Explore or revise brand and screen references while preserving locked decisions |
 | `screen` | Define one screen, its states, responsive behavior, and reference image |
-| `review` | Check product fit, consistency, accessibility, responsive behavior, content, and motion |
+| `build` | Generate the complete screen set, audit it, and write the implementation build plan |
+| `review` | Check product fit, consistency, accessibility, responsive behavior, content, motion, and image integrity |
 
 ## Example outputs
 
@@ -107,6 +109,8 @@ The repository reserves the same kind of centered image blocks used by establish
 ## Output package
 
 Each run writes to a new folder so accepted work is preserved:
+
+The full-screen build produces `reviews/IMAGE-AUDIT.md` and `execution/BUILD-PLAN.md` alongside the design files. Those records show what was checked, what was regenerated, and how the implementation should proceed.
 
 ```text
 design-output/<product-slug>/
@@ -129,9 +133,9 @@ design-output/<product-slug>/
 universal-ui-design/
 ├── .codex-plugin/plugin.json
 ├── skills/universal-ui-design/SKILL.md
-├── commands/             # create, imagegen, screen, review
-├── references/           # foundations loaded by stage
-├── templates/            # reusable product artifacts
+├── commands/             # create, imagegen, screen, build, review
+├── references/           # foundations and image-audit rules
+├── templates/            # reusable product and audit artifacts
 ├── evals/                # repository and package checks
 ├── assets/               # README image slots; no generated examples yet
 ├── ORIGIN.md             # research path and design rationale
