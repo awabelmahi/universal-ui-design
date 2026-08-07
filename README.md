@@ -83,7 +83,7 @@ The source of truth for execution is the finalized `DESIGN.md` plus the approved
 After publishing the repository, install the skill with the portable skills CLI:
 
 ```bash
-npx skills add <owner>/universal-ui-design --skill universal-ui-design --agent codex
+npx skills add awabelmahi08-design/universal-ui-design --skill universal-ui-design --agent codex
 ```
 
 The same repository can be used as a plugin through `.codex-plugin/plugin.json` or read directly from `skills/universal-ui-design/SKILL.md`.
